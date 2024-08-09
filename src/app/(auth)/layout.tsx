@@ -20,7 +20,7 @@ export default function AuthLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>
+      <body className={`mx-4 ${urbanist.className}`}>
         <Container className="max-w-[480px]">{children}</Container>
       </body>
     </html>
