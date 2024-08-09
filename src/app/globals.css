@@ -26,13 +26,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-body.light {
-  @apply bg-white text-black;
-}
 
-body.dark {
-  @apply bg-black text-white;
-}
 
 @layer utilities {
   .text-balance {
