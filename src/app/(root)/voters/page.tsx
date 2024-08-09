@@ -1,7 +1,10 @@
+import VoterListPage from "@/components/shared/voterlist";
 import React from "react";
 
 const VotingPage = () => {
-  return <div>VotingPage</div>;
+  return(
+    <VoterListPage/>
+  );
 };
 
 export default VotingPage;

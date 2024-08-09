@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="text-2xl font-bold">
           <Link href="/home">Student Union Election</Link>
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button onClick={toggleNavbar} className="focus:outline-none">
             {isOpen ? (
               <X className="h-6 w-6 text-white" />
@@ -26,7 +26,7 @@ const Navbar = () => {
           </button>
         </div>
         <ul
-          className={`md:flex space-x-8 hidden ${isOpen ? "block" : "hidden"}`}
+          className={`lg:flex space-x-8 hidden`}
         >
           <li>
             <Link href="/" className="hover:text-gray-300">
@@ -39,12 +39,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/registers" className="hover:text-gray-300">
+            <Link href="/signin" className="hover:text-gray-300">
               Registers
             </Link>
           </li>
           <li>
-            <Link href="/voterlist" className="hover:text-gray-300">
+            <Link href="/voters" className="hover:text-gray-300">
               Voters List
             </Link>
           </li>
@@ -62,7 +62,7 @@ const Navbar = () => {
       </div>
       {/* Mobile menu */}
       {isOpen && (
-        <ul className="md:hidden bg-blue-600 space-y-4 p-4">
+        <ul className="lg:hidden bg-blue-600 space-y-4 p-4">
           <li>
             <Link href="/" className="block hover:text-gray-300">
               Home
