@@ -16,9 +16,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CloudUpload } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -27,7 +31,17 @@ type FormComponentProps = {
   onSubmit?: (values: z.infer<typeof formSchema>) => void;
 };
 
+function getImageData(event: ChangeEvent<HTMLInputElement>) {
+  return URL.createObjectURL(event.target.files![0]);
+}
+
 const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const role = searchParams.get("role");
+
+  const [preview, setPreview] = useState<string>("");
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,6 +54,8 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
       faculty: "BEI",
       level: "1st year",
       role: "guest",
+      description: "",
+      imageUrl: "",
     },
   });
 
@@ -47,6 +63,10 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
     if (onSubmit) {
       onSubmit(values);
     }
+  };
+
+  const updateRoleQueryParam = (newRole: string) => {
+    router.push(`/signin?type=${type}&role=${newRole}`);
   };
 
   return (
@@ -224,7 +244,10 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
                 <FormItem className="flex flex-col w-full justify-center">
                   <FormLabel>Role</FormLabel>
                   <Select
-                    onValueChange={field.onChange}
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      updateRoleQueryParam(value);
+                    }}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -244,6 +267,62 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
             />
           </div>
         ) : null}
+
+        {role === "candidate" ? (
+          <div className="flex flex-col gap-4">
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Enter Description Here</FormLabel>
+                  <FormControl>
+                    <Textarea rows={6} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="imageUrl"
+              render={({ field: { onChange, value } }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        type="file"
+                        name="imageUrl"
+                        onChange={(event) => {
+                          const displayUrl = getImageData(event);
+                          setPreview(displayUrl);
+                          onChange(displayUrl);
+                        }}
+                        className="h-40 flex items-center justify-center cursor-pointer outline-dashed outline-4 outline-primary ring-0 border-collapse"
+                      />
+                      {value !== "" ? (
+                        <Image
+                          src={preview}
+                          width={100}
+                          height={100}
+                          className="absolute object-cover top-0 flex items-center justify-center h-full w-full pointer-events-none bg-white"
+                          alt="Image"
+                        />
+                      ) : (
+                        <div className="pointer-events-none absolute top-0 flex flex-col gap-2 items-center justify-center w-full h-full bg-white rounded-lg">
+                          <CloudUpload className="w-1/5 h-1/5" />
+                          Upload your Image
+                        </div>
+                      )}
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        ) : null}
+
         <Button type="submit">
           {type === "register" ? "Register" : "Login"}
         </Button>
