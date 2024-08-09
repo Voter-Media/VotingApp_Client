@@ -1,0 +1,53 @@
+CREATETABLEUSER(
+  user_idINTPRIMARYKEYAUTO_INCREMENT,
+  firstNameVARCHAR(50),
+  lastNameVARCHAR(50),
+  usernameVARCHAR(50)UNIQUE,
+  passwordVARCHAR(100),
+  phoneINT,
+  emailVARCHAR(100),
+  year_levelVARCHAR(10),
+  facultyVARCHAR(50),
+  genderVARCHAR(10),
+  roleVARCHAR(20),
+  verifiedBOOLEAN
+);
+CREATETABLElogin(
+usernameVARCHAR(50),
+login_time DATETIME,
+user_idINT,
+PRIMARYKEY(
+  user_id
+),
+FOREIGNKEY(
+  user_id
+)REFERENCESUSER(user_id)
+);
+CREATETABLEcandidate(
+candidate_idINTPRIMARYKEYAUTO_INCREMENTPOSITIONVARCHAR(50),
+imgVARCHAR(255),
+partyVARCHAR(50),
+user_idINT,
+FOREIGNKEY(
+user_id
+)REFERENCESUSER(user_id)
+);
+CREATETABLEvoter(
+voter_idINTPRIMARYKEYAUTO_INCREMENT,
+votedBOOLEAN,
+user_idINT,
+FOREIGNKEY(
+user_id
+)REFERENCESUSER(user_id)
+);
+CREATETABLEvote(
+vote_idINTPRIMARYKEYAUTO_INCREMENT,
+candidate_idINT,
+DATEDATETIME,
+voter_idINT,
+FOREIGNKEY(
+candidate_id
+)REFERENCEScandidate(candidate_id)FOREIGNKEY(
+voter_id
+)REFERENCESvoter(voter_id)
+);
