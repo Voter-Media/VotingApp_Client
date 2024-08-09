@@ -4,7 +4,7 @@ export default function Contact() {
       <h1 className="text-4xl font-bold">Contact Us</h1>
       <p className="text-lg mt-4">
         <a
-          href="https://https://littlelink-two-azure.vercel.app/"
+          href="https://littlelink-two-azure.vercel.app/"
           className="text-blue-500 hover:underline"
         >
           Get in touch with us.
