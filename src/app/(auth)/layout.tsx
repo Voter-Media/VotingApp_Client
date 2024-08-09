@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "../globals.css";
+import Container from "@/components/Container";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -19,7 +20,9 @@ export default function AuthLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>{children}</body>
+      <body className={`mx-4 ${urbanist.className}`}>
+        <Container className="max-w-[480px]">{children}</Container>
+      </body>
     </html>
   );
 }
