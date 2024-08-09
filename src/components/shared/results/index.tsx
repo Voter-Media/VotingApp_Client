@@ -37,18 +37,18 @@ const ResultsPage= () => {
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded">
             <thead>
-              <tr>
-                <th className="text-left py-3 px-2 md:px-4 bg-blue-600 text-white text-xs md:text-base ">Name</th>
-                <th className="text-left py-3 px-2 md:px-4 bg-blue-600 text-white text-xs md:text-base">Position</th>
-                <th className="text-left py-3 px-2 md:px-4 bg-blue-600 text-white text-xs md:text-base">Faculty</th>
+              <tr className='text-left bg-blue-600 text-white text-xs md:text-base '>
+                <th className="py-3 px-2  border-r-2 border-gray-300 ">Name</th>
+                <th className=" py-3 px-2  border-r-2 border-gray-300">Position</th>
+                <th className="py-3 px-2  ">Faculty</th>
               </tr>
             </thead>
             <tbody>
               {electedCandidates.map((candidate, index) => (
-                <tr key={index} className="border-t">
-                  <td className="py-3 px-2 md:px-4 text-xs md:text-base">{candidate.name}</td>
-                  <td className="py-3 px-2 md:px-4 text-xs md:text-base">{candidate.position}</td>
-                  <td className="py-3 px-2 md:px-4 text-xs md:text-base">{candidate.faculty}</td>
+                <tr key={index} className="border-t text-xs md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-r-2 border-gray-300 ">{candidate.name}</td>
+                  <td className="py-3 px-2 md:px-4 border-r-2 border-gray-300">{candidate.position}</td>
+                  <td className="py-3 px-2 md:px-4 ">{candidate.faculty}</td>
                 </tr>
               ))}
             </tbody>
