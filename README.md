@@ -11,8 +11,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributors](#contributors)
-- [Acknowledgement](#acknowledgement)
-
+	
 ## Overview
 
 This online voting system (Election management system as defined in title) is a web-based application designed to facilitate voting processes digitally. This project includes both front-end and back-end components, providing a seamless experience for users to cast their votes, view results, and access related information.
@@ -103,8 +102,8 @@ The project is composed of a proper front-end for client side providing a seamle
 
 ## Contributors:
 [Pawan Awasthi](https://github.com/pawandai) - Team lead  
- [Roshan Dahal](https://github.com/RoshanDharal123)  
+[Roshan Dahal](https://github.com/RoshanDharal123)  
 [Kendra Pokhrel](https://github.com/StellarSync/)  
 [Anish Neupane](https://github.com/2222anish22)  
-
+	
 	
