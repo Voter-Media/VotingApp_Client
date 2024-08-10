@@ -4,6 +4,8 @@ import "../globals.css";
 import Navbar from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
 
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,10 +22,11 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
-        <Navbar/>
+      
+         <Navbar/>
         {children}
         <Footer/>
-        </body>
+         </body>
     </html>
   );
 }
