@@ -1,6 +1,8 @@
 "use client";
-import FormComponent from "@/components/shared/form";
+import RegisterForm from "@/components/shared/form/RegisterForm";
+import SignInForm from "@/components/shared/form/SignInForm";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { z } from "zod";
 
 export const formSchema = z.object({
@@ -10,6 +12,7 @@ export const formSchema = z.object({
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
+  email: z.string().email({ message: "Invalid email address" }),
   confirmPassword: z.string(),
   firstName: z.string(),
   lastName: z.string(),
@@ -24,10 +27,32 @@ export const formSchema = z.object({
 const LoginPage = () => {
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
+  const token = localStorage.getItem("session_token");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/getUser", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          console.log("User is logged in:", data);
+        } else {
+          console.error("User is not logged in:", data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [token]);
 
   return (
     <>
-      <FormComponent type={type} />
+      {type === "login" ? <SignInForm /> : null}
+      {type === "register" ? <RegisterForm /> : null}
     </>
   );
 };
