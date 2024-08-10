@@ -167,9 +167,9 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="Male">Male</SelectItem>
+                      <SelectItem value="Female">Female</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -193,13 +193,13 @@ const FormComponent = ({ type, onSubmit }: FormComponentProps) => {
                     </FormControl>
                     <SelectContent>
                       {/* ["BEI", "BCT", "BME", "BCE", "BEL", "BAG", "BAR"] */}
-                      <SelectItem value="bei">BEI</SelectItem>
-                      <SelectItem value="bct">BCT</SelectItem>
-                      <SelectItem value="bme">BME</SelectItem>
-                      <SelectItem value="bce">BCE</SelectItem>
-                      <SelectItem value="bel">BEL</SelectItem>
-                      <SelectItem value="bag">BAG</SelectItem>
-                      <SelectItem value="bar">BAR</SelectItem>
+                      <SelectItem value="BEI">BEI</SelectItem>
+                      <SelectItem value="BCT">BCT</SelectItem>
+                      <SelectItem value="BME">BME</SelectItem>
+                      <SelectItem value="BCE">BCE</SelectItem>
+                      <SelectItem value="BEL">BEL</SelectItem>
+                      <SelectItem value="BAG">BAG</SelectItem>
+                      <SelectItem value="BAR">BAR</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

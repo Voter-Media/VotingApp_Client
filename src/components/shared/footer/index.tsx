@@ -24,21 +24,16 @@ const Footer = () => {
         </div>
         {/* Social Media or Additional Links Section */}
         <div>
-          <h4 className="text-xl font-bold mb-2">Follow Us</h4>
+          <h4 className="text-xl font-bold mb-2"></h4>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="hover:text-gray-300">
-                Facebook
+              <Link href="/about" className="hover:text-gray-300">
+                About Us
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-gray-300">
-                Twitter
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-gray-300">
-                Instagram
+              <Link href="https://littlelink-two-azure.vercel.app/" className="hover:text-gray-300">
+                Connect With US
               </Link>
             </li>
           </ul>
