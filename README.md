@@ -102,9 +102,9 @@ The project is composed of a proper front-end for client side providing a seamle
 3. Use the admin dashboard to manage voters, candidates and monitor results.
 
 ## Contributors:
-[Pawan Awasthi](https://github.com/pawandai) - Team lead
-[Roshan Dahal](https://github.com/RoshanDharal123)
-[Kendra Pokhrel](https://github.com/StellarSync/)
-[Anish Neupane](https://github.com/2222anish22)
+[Pawan Awasthi](https://github.com/pawandai) - Team lead  
+ [Roshan Dahal](https://github.com/RoshanDharal123)  
+[Kendra Pokhrel](https://github.com/StellarSync/)  
+[Anish Neupane](https://github.com/2222anish22)  
 
 	
