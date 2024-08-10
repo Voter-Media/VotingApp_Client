@@ -5,7 +5,6 @@
 
 - [Overview](#Overview)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 	- [Frontend](#frontend)
 	- [Backend](#backend)
@@ -67,5 +66,4 @@ The **Online Voting System** is designed to manage and streamline the process of
 	- Efficient handling of data with structured relationships between users, voters, candidates, and votes.
 	- Use of SQL for reliable and secure data storage.
 
-## Technologies Used:
 
