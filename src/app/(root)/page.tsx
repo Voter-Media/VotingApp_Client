@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/shared/footer";
 import Navbar from "@/components/shared/header";
 import { Provider } from "react-redux";
