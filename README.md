@@ -22,7 +22,7 @@ The web-app provides a client side app for the users to cast their vote directly
 
 The major purpose of the project is to provide the community with an easier assist to people with voting that is transparent and accurate than the traditional voting system. 
 
-The **Online Voting System** is designed to manage and streamline the process of coting in any election. It allows users to register as voters, log in to cast their votes to the representing candidates of their choice, and view real-time results. The system comprises several entities, each represented by tables in the database, which interact with each other to ensure a smooth voting experience.
+The **Online Voting System** is designed to manage and streamline the process of voting in any election. It allows users to register as voters, log in to cast their votes to the representing candidates of their choice, and view real-time results. The system comprises several entities, each represented by tables in the database, which interact with each other to ensure a smooth voting experience.
 
 1. User Registration and Authentication
       - User Entity:
@@ -43,3 +43,29 @@ The **Online Voting System** is designed to manage and streamline the process of
 		  - The vote entity records each vote cast in the election. It includes a vote_id, the candidate_id of the candidate who received the vote, the voter_id of the voter, and the date and time when the vote was cast.
 		  - This entity ensures that votes are securely recorded and can be used to generate real-time results.
 ## Features
+- User Authentication and Authorization:
+	- Secure user login and registration system
+	- Role-based access control, ensuring only authorized users can access certain features. 
+- Voting Mechanism:
+	- Voters can view a list of candidates and cast their vote for a specific position.
+	- Once a vote is cast, it is securely stored in the database, and the voter is marked as having voted.
+	- After a vote is cast and stored, a voter cannot revoke or change their vote to ensure a fair election process.
+- Candidate Management:
+	- Admins can add and manage candidates, including their position, party affiliation, and profile image.
+	- Candidates can view their profiles and update their information.
+- Real-Time Vote Tracking:
+	- Votes are tracked in real-time, allowing administrators to monitor the election process.
+	- Voters can see a confirmation of their vote after it has been cast.
+- Data Security:
+	- All sensitive user information, including passwords, is encrypted.
+	- A user(both candidates and voters) can view their data and are able to update to ensure a proper profile but cannot access information about other users to maintain security and breaches.
+	- Secure communication between the front-end and back-end ensures that data integrity is maintained.
+- User Interface:
+	- Responsive design ensures compatibility across devices.
+	- Intuitive navigation and user-friendly design enhance the overall user experience.
+- Database Management:
+	- Efficient handling of data with structured relationships between users, voters, candidates, and votes.
+	- Use of SQL for reliable and secure data storage.
+
+## Technologies Used:
+
