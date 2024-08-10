@@ -71,7 +71,40 @@ The **Online Voting System** is designed to manage and streamline the process of
 The project is composed of a proper front-end for client side providing a seamless user experience and an appropriate back-end for server side providing with the database storing and management and redirection.
 - Front-end:
 	- The front-end of the project is composed off of javascript, typescript and css building an easy to understand and easy to use user interface.
-
+	
 - Back-end:
 	- The back-end of the project relies on javascript to provide it with proper handling of functionalities of the web-interface, database management and redirection.
 	- The database relies on SQL for all data-related operations, including CRUD(Create, Read, Update, Delete) activities, schema management and transaction control.
+
+## Installation
+- #### Prerequisites
+	-  Node.js and npm installed on your machine.
+	- MySQL or MariaDB sql instance running.
+- ##### Front-end setup.
+1. Navigate to the `front-end` directory:
+		`cd frontend`
+2. Install the dependencies:
+		`npm install`
+3. Start the development server:
+		`npm run dev`
+- ##### Back-end setup.
+1. Navigate to the `back-end` directory:
+		`cd backend`
+2. Install the dependencies:
+		`npm install`
+3. Configure database.
+4. Start the back-end server:
+		`node app.js`
+
+## Usage
+1. Start the both backend and frontend servers.
+2. Access the frontend via the development server i.e `http://localhost:3000`.
+3. Use the admin dashboard to manage voters, candidates and monitor results.
+
+## Contributors:
+[Pawan Awasthi](https://github.com/pawandai) - Team lead
+[Roshan Dahal](https://github.com/RoshanDharal123)
+[Kendra Pokhrel](https://github.com/StellarSync/)
+[Anish Neupane](https://github.com/2222anish22)
+
+	
