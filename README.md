@@ -6,8 +6,8 @@
 - [Overview](#Overview)
 - [Features](#features)
 - [Project Structure](#project-structure)
-	- [Frontend](#frontend)
-	- [Backend](#backend)
+	- [Frontend](#front-end)
+	- [Backend](#back-end)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributors](#contributors)
@@ -66,4 +66,12 @@ The **Online Voting System** is designed to manage and streamline the process of
 	- Efficient handling of data with structured relationships between users, voters, candidates, and votes.
 	- Use of SQL for reliable and secure data storage.
 
+## Project Structure:
 
+The project is composed of a proper front-end for client side providing a seamless user experience and an appropriate back-end for server side providing with the database storing and management and redirection.
+- Front-end:
+	- The front-end of the project is composed off of javascript, typescript and css building an easy to understand and easy to use user interface.
+
+- Back-end:
+	- The back-end of the project relies on javascript to provide it with proper handling of functionalities of the web-interface, database management and redirection.
+	- The database relies on SQL for all data-related operations, including CRUD(Create, Read, Update, Delete) activities, schema management and transaction control.
