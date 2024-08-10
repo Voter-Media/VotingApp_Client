@@ -1,5 +1,4 @@
 import React from "react";
-
 const AboutUsPage = () => {
   return (
     <div className="bg-gray-100 text-gray-800 py-16">
