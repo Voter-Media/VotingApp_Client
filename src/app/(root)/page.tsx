@@ -1,6 +1,12 @@
+"use client";
+
+import useAuth from "@/hooks/useAuth";
 import Image from "next/image";
 
 export default function HomePage() {
+  const { user } = useAuth();
+  console.log("User from hook: ", user);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
