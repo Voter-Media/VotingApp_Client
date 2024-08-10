@@ -93,7 +93,7 @@ The project is composed of a proper front-end for client side providing a seamle
 		`npm install`
 3. Configure database.
 4. Start the back-end server:
-		`node app.js`
+		`nmp run dev`
 
 ## Usage
 1. Start the both backend and frontend servers.
