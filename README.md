@@ -71,12 +71,12 @@ The **Online Voting System** is designed to manage and streamline the process of
 The project is composed of a proper front-end for client side providing a seamless user experience and an appropriate back-end for server side providing with the database storing and management and redirection.
 - Front-end:
 	- The front-end of the project is composed off of javascript, typescript and css building an easy to understand and easy to use user interface.
-
+<details>
 <summary>VotingApp_Client/  </summary>
           ├── public/                           
           │   ├── favicon.ico                   
           │   ├── index.html                    
-          │   └── robots.txt                    
+	        │   └── robots.txt                   
           ├── src/                              
           │   ├── api/                          
           │   │   ├── apiClient.ts              
@@ -111,7 +111,7 @@ The project is composed of a proper front-end for client side providing a seamle
           ├── package.json                      
           ├── tsconfig.json                     
           └── yarn.lock                         
-
+</details>
 
 - Back-end:
 	- The back-end of the project relies on javascript to provide it with proper handling of functionalities of the web-interface, database management and redirection.
