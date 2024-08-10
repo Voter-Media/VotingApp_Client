@@ -73,44 +73,44 @@ The project is composed of a proper front-end for client side providing a seamle
 	- The front-end of the project is composed off of javascript, typescript and css building an easy to understand and easy to use user interface.
 
         VotingApp_Client/
-        ├── public/                           
-        │   ├── favicon.ico                   
-        │   ├── index.html                    
-        │   └── robots.txt                    
-        ├── src/                              
-        │   ├── api/                          
-        │   │   ├── apiClient.ts              
-        │   │   ├── apiRoutes.ts              
-        │   │   └── index.ts                  
-        │   ├── assets/                       
-        │   ├── components/                   
-        │   │   ├── Button.tsx                
-        │   │   ├── Header.tsx                
-        │   │   ├── Input.tsx                 
-        │   │   └── ...                       
-        │   ├── pages/                        
-        │   │   ├── Home.tsx                  
-        │   │   ├── Login.tsx                 
-        │   │   ├── Signup.tsx                
-        │   │   └── ...                       
-        │   ├── hooks/                        
-        │   │   ├── useAuth.ts                
-        │   │   └── useFetch.ts               
-        │   ├── styles/                       
-        │   │   ├── global.css                
-        │   │   ├── theme.css                 
-        │   │   └── ...                       
-        │   ├── utils/                        
-        │   │   ├── constants.ts              
-        │   │   └── helpers.ts                
-        │   ├── App.tsx                       
-        │   ├── index.tsx                     
-        │   └── ...                           
-        ├── .gitignore                        
-        ├── README.md                         
-        ├── package.json                      
-        ├── tsconfig.json                     
-        └── yarn.lock                         
+          ├── public/                           
+          │   ├── favicon.ico                   
+          │   ├── index.html                    
+          │   └── robots.txt                    
+          ├── src/                              
+          │   ├── api/                          
+          │   │   ├── apiClient.ts              
+          │   │   ├── apiRoutes.ts              
+          │   │   └── index.ts                  
+          │   ├── assets/                       
+          │   ├── components/                   
+          │   │   ├── Button.tsx                
+          │   │   ├── Header.tsx                
+          │   │   ├── Input.tsx                 
+          │   │   └── ...                       
+          │   ├── pages/                        
+          │   │   ├── Home.tsx                  
+          │   │   ├── Login.tsx                 
+          │   │   ├── Signup.tsx                
+          │   │   └── ...                       
+          │   ├── hooks/                        
+          │   │   ├── useAuth.ts                
+          │   │   └── useFetch.ts               
+          │   ├── styles/                       
+          │   │   ├── global.css                
+          │   │   ├── theme.css                 
+          │   │   └── ...                       
+          │   ├── utils/                        
+          │   │   ├── constants.ts              
+          │   │   └── helpers.ts                
+          │   ├── App.tsx                       
+          │   ├── index.tsx                     
+          │   └── ...                           
+          ├── .gitignore                        
+          ├── README.md                         
+          ├── package.json                      
+          ├── tsconfig.json                     
+          └── yarn.lock                         
 
 
 - Back-end:
