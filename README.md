@@ -72,7 +72,7 @@ The project is composed of a proper front-end for client side providing a seamle
 - Front-end:
 	- The front-end of the project is composed off of javascript, typescript and css building an easy to understand and easy to use user interface.
 
-        VotingApp_Client/  
+<summary>VotingApp_Client/  </summary>
           ├── public/                           
           │   ├── favicon.ico                   
           │   ├── index.html                    
