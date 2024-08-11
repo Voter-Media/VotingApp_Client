@@ -1,10 +1,14 @@
 "use client";
-import { MenuIcon, X } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import useAuth from "@/hooks/useAuth";
+import { Loader2, LogOut, MenuIcon, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout, loading, error } = useAuth();
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -14,7 +18,7 @@ const Navbar = () => {
     <nav className="bg-blue-600 text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-2xl font-bold">
-          <Link href="/home">Student Union Election</Link>
+          <Link href="/">Student Union Election</Link>
         </div>
         <div className="lg:hidden">
           <button onClick={toggleNavbar} className="focus:outline-none">
@@ -25,9 +29,7 @@ const Navbar = () => {
             )}
           </button>
         </div>
-        <ul
-          className={`lg:flex space-x-8 hidden`}
-        >
+        <ul className={`lg:flex space-x-8 hidden`}>
           <li>
             <Link href="/" className="hover:text-gray-300">
               Home
@@ -38,16 +40,23 @@ const Navbar = () => {
               Candidates
             </Link>
           </li>
-          <li>
-            <Link href="/signin" className="hover:text-gray-300">
-              Registers
-            </Link>
-          </li>
-          <li>
-            <Link href="/voters" className="hover:text-gray-300">
-              Voters List
-            </Link>
-          </li>
+          {!user && (
+            <li>
+              <Link
+                href="/signin?type=register"
+                className="hover:text-gray-300"
+              >
+                Register
+              </Link>
+            </li>
+          )}
+          {user && (
+            <li>
+              <Link href="/voters" className="hover:text-gray-300">
+                Voters List
+              </Link>
+            </li>
+          )}
           <li>
             <Link href="/results" className="hover:text-gray-300">
               Results
@@ -55,9 +64,21 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="/about" className="hover:text-gray-300">
-             About Us
+              About Us
             </Link>
           </li>
+
+          {user ? (
+            <li>
+              <Button variant="link" onClick={() => logout()}>
+                {loading ? (
+                  <LogOut className="h-8 w-8 rounded full p-2" />
+                ) : (
+                  <Loader2 className="animate-spin h-8 w-8" />
+                )}
+              </Button>
+            </li>
+          ) : null}
         </ul>
       </div>
       {/* Mobile menu */}
@@ -74,8 +95,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="registers" className="hover:text-gray-300">
-              Registers
+            <Link href="/signin?type=register" className="hover:text-gray-300">
+              Register
             </Link>
           </li>
           <li>
@@ -89,8 +110,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about" className="block hover:text-gray-300" >
-             About Us
+            <Link href="/about" className="block hover:text-gray-300">
+              About Us
             </Link>
           </li>
         </ul>

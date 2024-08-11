@@ -1,4 +1,6 @@
 import Container from "@/components/Container";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 
 const VerifyEmail = async ({
   searchParams,
@@ -30,6 +32,12 @@ const VerifyEmail = async ({
       <Container className="min-h-[70vh] items-center justify-center gap-4">
         <h1 className="text-3xl font-semibold">Email Verified</h1>
         <p>You can now login.</p>
+        <Link
+          href="/signin?type=login"
+          className={buttonVariants({ variant: "link" })}
+        >
+          Login &raar;
+        </Link>
       </Container>
     );
   }

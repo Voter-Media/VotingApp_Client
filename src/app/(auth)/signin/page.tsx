@@ -1,6 +1,7 @@
 "use client";
 import RegisterForm from "@/components/shared/form/RegisterForm";
 import SignInForm from "@/components/shared/form/SignInForm";
+import { getSessionToken } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { z } from "zod";
@@ -20,6 +21,8 @@ export const formSchema = z.object({
   faculty: z.enum(["BEI", "BCT", "BME", "BCE", "BEL", "BAG", "BAR"]),
   level: z.enum(["1st year", "2nd year", "3rd year", "4th year", "5th year"]),
   role: z.enum(["voter", "candidate", "guest", "admin"]),
+  party: z.enum(["NSU", "ANFSU", "KRANTIKARI", "SAMAJBADI", "CHEBISANGH"]),
+  position: z.enum(["President", "Vice President", "Secretary", "Treasurer"]),
   description: z.string().optional(),
   imageUrl: z.string().optional(),
 });
@@ -27,7 +30,7 @@ export const formSchema = z.object({
 const LoginPage = () => {
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
-  const token = localStorage.getItem("session_token");
+  const token = getSessionToken();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/getUser", {

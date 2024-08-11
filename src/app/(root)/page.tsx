@@ -1,5 +1,7 @@
+"use client";
+
 import HomePage from "@/components/shared/home";
-export default function page() {
+export default function Page() {
   return (
     <div>
       <HomePage />

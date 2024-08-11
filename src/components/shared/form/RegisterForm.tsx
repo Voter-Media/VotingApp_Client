@@ -20,12 +20,13 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CloudUpload } from "lucide-react";
+import { CloudUpload, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast, Toaster } from "sonner";
 import { z } from "zod";
 
 function getImageData(event: ChangeEvent<HTMLInputElement>) {
@@ -52,6 +53,8 @@ const RegisterForm = () => {
       faculty: "BEI",
       level: "1st year",
       role: "guest",
+      position: "President",
+      party: "CHEBISANGH",
       description: "",
       imageUrl: "",
     },
@@ -71,9 +74,14 @@ const RegisterForm = () => {
       );
 
       if (response.ok) {
-        router.push("/verifyEmail");
+        toast.success("Registration successful. Please verify your email.");
+        form.reset();
+        setTimeout(() => {
+          router.push("/verifyEmail");
+        }, 3000);
       }
     } catch (error) {
+      toast.error("Registration failed. Please try again.");
       console.error(error);
     }
   }
@@ -84,6 +92,7 @@ const RegisterForm = () => {
 
   return (
     <Form {...form}>
+      <Toaster richColors position="top-center" />
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-2 flex flex-col justify-center min-h-[100vh] my-8"
@@ -285,7 +294,6 @@ const RegisterForm = () => {
                   <SelectContent>
                     <SelectItem value="candidate">Candidate</SelectItem>
                     <SelectItem value="voter">Voter</SelectItem>
-                    <SelectItem value="guest">Guest</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -296,6 +304,61 @@ const RegisterForm = () => {
 
         {role === "candidate" ? (
           <div className="flex flex-col gap-4">
+            <FormField
+              control={form.control}
+              name="party"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Select your party</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your party" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="NSU">NSU</SelectItem>
+                      <SelectItem value="ANFSU">ANFSU</SelectItem>
+                      <SelectItem value="KRANTIKARI">KRANTIKARI</SelectItem>
+                      <SelectItem value="SAMJBADI">SAMJBADI</SelectItem>
+                      <SelectItem value="CHEBISANGH">CHEBISANGH</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="position"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Position</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your position" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="President">President</SelectItem>
+                      <SelectItem value="Vice President">
+                        Vice President
+                      </SelectItem>
+                      <SelectItem value="Secretary">Secretary</SelectItem>
+                      <SelectItem value="Tresurer">Tresurer</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="description"
@@ -309,7 +372,7 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="imageUrl"
               render={({ field: { onChange, value } }) => (
@@ -345,11 +408,19 @@ const RegisterForm = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
           </div>
         ) : null}
 
-        <Button type="submit">Register</Button>
+        <Button type="submit">
+          {form.formState.isSubmitting ? (
+            <span className="flex items-center justify-center gap-4">
+              Submitting <Loader2 className="animate-spin w-6 h-6" />
+            </span>
+          ) : (
+            "Register"
+          )}
+        </Button>
         <Link
           href="/signin?type=login"
           className={buttonVariants({ variant: "link" })}
