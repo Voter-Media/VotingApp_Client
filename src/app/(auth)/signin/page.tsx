@@ -2,6 +2,7 @@
 import RegisterForm from "@/components/shared/form/RegisterForm";
 import SignInForm from "@/components/shared/form/SignInForm";
 import { getSessionToken } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
@@ -31,7 +32,7 @@ const LoginPage = () => {
   }, [token]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loader2 className="h-10 w- 10 animate-spin" />}>
       {type === "login" ? <SignInForm /> : null}
       {type === "register" ? <RegisterForm /> : null}
     </Suspense>
