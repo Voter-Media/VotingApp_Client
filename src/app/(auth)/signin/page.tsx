@@ -31,10 +31,18 @@ const LoginPage = () => {
   }, [token]);
 
   return (
-    <Suspense>
-      {type === "login" ? <SignInForm /> : null}
-      {type === "register" ? <RegisterForm /> : null}
-    </Suspense>
+    <>
+      {type === "login" ? (
+        <Suspense>
+          <SignInForm />
+        </Suspense>
+      ) : null}
+      {type === "register" ? (
+        <Suspense>
+          <RegisterForm />
+        </Suspense>
+      ) : null}
+    </>
   );
 };
 
