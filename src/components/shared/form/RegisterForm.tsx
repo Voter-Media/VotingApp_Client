@@ -1,6 +1,5 @@
 "use client";
 
-import { formSchema } from "@/app/(auth)/signin/page";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
@@ -19,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { formSchema } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CloudUpload, Loader2 } from "lucide-react";
 import Image from "next/image";
