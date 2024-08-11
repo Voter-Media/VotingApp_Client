@@ -13,8 +13,8 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
 import { useForm } from "react-hook-form";
+import { toast, Toaster } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -52,15 +52,19 @@ const SignInForm = () => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("session_token", data.token);
-        router.push("/");
+        toast.success("Login successful !");
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
       }
     } catch (error) {
-      throw new Error("An error occurred. Please try again later");
+      toast.error("An error occurred. Refresh the page and try again !");
     }
   }
 
   return (
     <Form {...form}>
+      <Toaster richColors position="top-center" />
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-2 flex flex-col justify-center min-h-[100vh] my-8"

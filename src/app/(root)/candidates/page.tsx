@@ -7,6 +7,7 @@ import { Loader, Loader2, LoaderPinwheel } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast, Toaster } from "sonner";
 
 const CandidatePage = () => {
   const [selectedCandidates, setSelectedCandidates] = useState<
@@ -66,9 +67,12 @@ const CandidatePage = () => {
         throw new Error("Failed to submit votes");
       }
 
-      router.push("/results");
+      toast.success("Votes submitted successfully");
+      setTimeout(() => {
+        router.push("/results");
+      }, 3000);
     } catch (error) {
-      console.error("Error submitting votes:", error);
+      toast.error("Failed to submit votes. Refresh the page and try again !");
     }
   };
 
@@ -82,6 +86,7 @@ const CandidatePage = () => {
 
   return (
     <div className="text-gray-800 py-16 min-h-[80vh]">
+      <Toaster richColors position="top-center" />
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8 text-center">Candidate List</h1>
         <div className="overflow-x-auto">
