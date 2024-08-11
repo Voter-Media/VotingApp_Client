@@ -38,7 +38,6 @@ const SignInForm = () => {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log("Form Data", data);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
@@ -50,14 +49,13 @@ const SignInForm = () => {
           },
         }
       );
-      console.log("Login Response", response);
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("session_token", data.token);
         router.push("/");
       }
     } catch (error) {
-      console.error(error);
+      throw new Error("An error occurred. Please try again later");
     }
   }
 

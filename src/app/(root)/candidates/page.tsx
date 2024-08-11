@@ -25,7 +25,6 @@ const CandidatePage = () => {
       .then((response) => response.json())
       .then((data) => {
         setCands(data.data);
-        console.log("Candidate Data", data);
         setLoading(false);
       })
       .catch((error) => {

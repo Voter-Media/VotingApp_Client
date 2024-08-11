@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "../globals.css";
 import Container from "@/components/Container";
+import { Suspense } from "react";
+import { Loader2 } from "lucide-react";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -21,7 +23,11 @@ export default function AuthLayout({
   return (
     <html lang="en">
       <body className={`mx-4 ${urbanist.className}`}>
-        <Container className="max-w-[480px]">{children}</Container>
+        <Container className="max-w-[480px]">
+          <Suspense fallback={<Loader2 className="h-20 w-20 animate-spin" />}>
+            {children}
+          </Suspense>
+        </Container>
       </body>
     </html>
   );

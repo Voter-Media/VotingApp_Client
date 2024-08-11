@@ -12,10 +12,9 @@ const VoterListPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setVoters(data.data);
-        console.log(data);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        throw new Error("An error occurred. Please try again later");
       });
   }, []);
 
@@ -32,9 +31,6 @@ const VoterListPage = () => {
                 </th>
                 <th className="text-left py-3 px-4 bg-blue-600 text-white">
                   Last Name
-                </th>
-                <th className="text-left py-3 px-4 bg-blue-600 text-white">
-                  Phone No
                 </th>
                 <th className="text-left py-3 px-4 bg-blue-600 text-white">
                   Year Level
@@ -61,7 +57,6 @@ const VoterListPage = () => {
                 <tr key={index} className="border-t">
                   <td className="py-3 px-4">{voter.firstName}</td>
                   <td className="py-3 px-4">{voter.lastName}</td>
-                  <td className="py-3 px-4">{voter.phone}</td>
                   <td className="py-3 px-4">{voter.year_level}</td>
                   <td className="py-3 px-4">{voter.faculty}</td>
                   <td className="py-3 px-4">{voter.gender}</td>
