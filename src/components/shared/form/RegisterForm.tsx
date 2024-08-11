@@ -24,7 +24,7 @@ import { CloudUpload, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast, Toaster } from "sonner";
 import { z } from "zod";
@@ -91,288 +91,289 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <Toaster richColors position="top-center" />
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 flex flex-col justify-center min-h-[100vh] my-8"
-      >
-        <h2 className="text-center text-3xl font-semibold">
-          {type === "register" ? "Register to Vote" : "Login to your account"}
-        </h2>
-        <FormField
-          control={form.control}
-          name="studentId"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Student ID</FormLabel>
-              <FormControl>
-                <Input placeholder="PUR078BEI023" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+    <Suspense>
+      <Form {...form}>
+        <Toaster richColors position="top-center" />
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-2 flex flex-col justify-center min-h-[100vh] my-8"
+        >
+          <h2 className="text-center text-3xl font-semibold">
+            {type === "register" ? "Register to Vote" : "Login to your account"}
+          </h2>
           <FormField
             control={form.control}
-            name="firstName"
+            name="studentId"
             render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>First Name</FormLabel>
+              <FormItem>
+                <FormLabel>Student ID</FormLabel>
                 <FormControl>
-                  <Input placeholder="John" {...field} />
+                  <Input placeholder="PUR078BEI023" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="johndoe@mail.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Enter Password"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Enter Password Again"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-          <FormField
-            control={form.control}
-            name="gender"
-            render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>Gender</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a gender" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="Male">Male</SelectItem>
-                    <SelectItem value="Female">Female</SelectItem>
-                    <SelectItem value="Other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="faculty"
-            render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>Faculty</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a faculty" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {/* ["BEI", "BCT", "BME", "BCE", "BEL", "BAG", "BAR"] */}
-                    <SelectItem value="BEI">BEI</SelectItem>
-                    <SelectItem value="BCT">BCT</SelectItem>
-                    <SelectItem value="BME">BME</SelectItem>
-                    <SelectItem value="BCE">BCE</SelectItem>
-                    <SelectItem value="BEL">BEL</SelectItem>
-                    <SelectItem value="BAG">BAG</SelectItem>
-                    <SelectItem value="BAR">BAR</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-          <FormField
-            control={form.control}
-            name="level"
-            render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>Level</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your year" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="1st year">1st year</SelectItem>
-                    <SelectItem value="2nd year">2nd year</SelectItem>
-                    <SelectItem value="3rd year">3rd year</SelectItem>
-                    <SelectItem value="4th year">4th year</SelectItem>
-                    <SelectItem value="5th year">5th year</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="role"
-            render={({ field }) => (
-              <FormItem className="flex flex-col w-full justify-center">
-                <FormLabel>Role</FormLabel>
-                <Select
-                  onValueChange={(value) => {
-                    field.onChange(value);
-                    updateRoleQueryParam(value);
-                  }}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your Role" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="candidate">Candidate</SelectItem>
-                    <SelectItem value="voter">Voter</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        {role === "candidate" ? (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
             <FormField
               control={form.control}
-              name="party"
+              name="firstName"
               render={({ field }) => (
                 <FormItem className="flex flex-col w-full justify-center">
-                  <FormLabel>Select your party</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your party" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="NSU">NSU</SelectItem>
-                      <SelectItem value="ANFSU">ANFSU</SelectItem>
-                      <SelectItem value="KRANTIKARI">KRANTIKARI</SelectItem>
-                      <SelectItem value="SAMJBADI">SAMJBADI</SelectItem>
-                      <SelectItem value="CHEBISANGH">CHEBISANGH</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="position"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Position</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your position" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="President">President</SelectItem>
-                      <SelectItem value="Vice President">
-                        Vice President
-                      </SelectItem>
-                      <SelectItem value="Secretary">Secretary</SelectItem>
-                      <SelectItem value="Tresurer">Tresurer</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Enter Description Here</FormLabel>
+                  <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Textarea rows={6} {...field} />
+                    <Input placeholder="John" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* <FormField
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="johndoe@mail.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Enter Password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Enter Password Again"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Gender</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a gender" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Male">Male</SelectItem>
+                      <SelectItem value="Female">Female</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="faculty"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Faculty</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a faculty" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {/* ["BEI", "BCT", "BME", "BCE", "BEL", "BAG", "BAR"] */}
+                      <SelectItem value="BEI">BEI</SelectItem>
+                      <SelectItem value="BCT">BCT</SelectItem>
+                      <SelectItem value="BME">BME</SelectItem>
+                      <SelectItem value="BCE">BCE</SelectItem>
+                      <SelectItem value="BEL">BEL</SelectItem>
+                      <SelectItem value="BAG">BAG</SelectItem>
+                      <SelectItem value="BAR">BAR</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+            <FormField
+              control={form.control}
+              name="level"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Level</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your year" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="1st year">1st year</SelectItem>
+                      <SelectItem value="2nd year">2nd year</SelectItem>
+                      <SelectItem value="3rd year">3rd year</SelectItem>
+                      <SelectItem value="4th year">4th year</SelectItem>
+                      <SelectItem value="5th year">5th year</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem className="flex flex-col w-full justify-center">
+                  <FormLabel>Role</FormLabel>
+                  <Select
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      updateRoleQueryParam(value);
+                    }}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your Role" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="candidate">Candidate</SelectItem>
+                      <SelectItem value="voter">Voter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          {role === "candidate" ? (
+            <div className="flex flex-col gap-4">
+              <FormField
+                control={form.control}
+                name="party"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col w-full justify-center">
+                    <FormLabel>Select your party</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your party" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="NSU">NSU</SelectItem>
+                        <SelectItem value="ANFSU">ANFSU</SelectItem>
+                        <SelectItem value="KRANTIKARI">KRANTIKARI</SelectItem>
+                        <SelectItem value="SAMJBADI">SAMJBADI</SelectItem>
+                        <SelectItem value="CHEBISANGH">CHEBISANGH</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="position"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Position</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your position" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="President">President</SelectItem>
+                        <SelectItem value="Vice President">
+                          Vice President
+                        </SelectItem>
+                        <SelectItem value="Secretary">Secretary</SelectItem>
+                        <SelectItem value="Tresurer">Tresurer</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Enter Description Here</FormLabel>
+                    <FormControl>
+                      <Textarea rows={6} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {/* <FormField
               control={form.control}
               name="imageUrl"
               render={({ field: { onChange, value } }) => (
@@ -409,26 +410,27 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             /> */}
-          </div>
-        ) : null}
+            </div>
+          ) : null}
 
-        <Button type="submit">
-          {form.formState.isSubmitting ? (
-            <span className="flex items-center justify-center gap-4">
-              Submitting <Loader2 className="animate-spin w-6 h-6" />
-            </span>
-          ) : (
-            "Register"
-          )}
-        </Button>
-        <Link
-          href="/signin?type=login"
-          className={buttonVariants({ variant: "link" })}
-        >
-          Already Registered? Login Instead &rarr;
-        </Link>
-      </form>
-    </Form>
+          <Button type="submit">
+            {form.formState.isSubmitting ? (
+              <span className="flex items-center justify-center gap-4">
+                Submitting <Loader2 className="animate-spin w-6 h-6" />
+              </span>
+            ) : (
+              "Register"
+            )}
+          </Button>
+          <Link
+            href="/signin?type=login"
+            className={buttonVariants({ variant: "link" })}
+          >
+            Already Registered? Login Instead &rarr;
+          </Link>
+        </form>
+      </Form>
+    </Suspense>
   );
 };
 

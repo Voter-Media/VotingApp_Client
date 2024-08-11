@@ -3,7 +3,7 @@ import RegisterForm from "@/components/shared/form/RegisterForm";
 import SignInForm from "@/components/shared/form/SignInForm";
 import { getSessionToken } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 const LoginPage = () => {
   const searchParams = useSearchParams();
@@ -31,10 +31,10 @@ const LoginPage = () => {
   }, [token]);
 
   return (
-    <>
+    <Suspense>
       {type === "login" ? <SignInForm /> : null}
       {type === "register" ? <RegisterForm /> : null}
-    </>
+    </Suspense>
   );
 };
 
