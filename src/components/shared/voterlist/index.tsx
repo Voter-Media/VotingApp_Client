@@ -5,32 +5,6 @@ import { useEffect, useState } from "react";
 
 const VoterListPage = () => {
   const [voters, setVoters] = useState<voterType[]>([]);
-  // const voters = [
-  //   {
-  //     firstname: "John",
-  //     lastname: "Doe",
-  //     phoneno: "123-456-7890",
-  //     yearlevel: "Sophomore",
-  //     faculty: "Engineering",
-  //     gender: "Male",
-  //     role: "Student",
-  //     verified: true,
-  //     voted: false,
-  //   },
-  //   {
-  //     firstname: "Jane",
-  //     lastname: "Smith",
-  //     phoneno: "098-765-4321",
-  //     yearlevel: "Senior",
-  //     faculty: "Arts",
-  //     gender: "Female",
-  //     role: "Student",
-  //     verified: true,
-  //     voted: true,
-  //   },
-  //   // Add more voters as needed
-  // ];
-
   useEffect(() => {
     fetch("http://localhost:5000/api/voters", {
       method: "GET",

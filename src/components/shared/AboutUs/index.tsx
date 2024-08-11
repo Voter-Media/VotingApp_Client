@@ -13,8 +13,8 @@ const AboutUsPage = () => {
             Management System(DBMS).We have created a fully functional Online
             Voting System (OVS) that is designed to be used in Free Student
             Union elections. Our system us secure n user-fridenly and efficient
-            .We are proud of the work we've done and are excited to share it
-            with our professor.
+            .We are proud of the work we&apos;ve done and are excited to share
+            it with our professor.
           </p>
         </div>
 

@@ -71,7 +71,7 @@ const Navbar = () => {
           {user ? (
             <li>
               <Button variant="link" onClick={() => logout()}>
-                {loading ? (
+                {!loading ? (
                   <LogOut className="h-8 w-8 rounded full p-2" />
                 ) : (
                   <Loader2 className="animate-spin h-8 w-8" />
