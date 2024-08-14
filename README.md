@@ -80,34 +80,19 @@ The project is composed of a proper front-end for client side providing a seamle
 - #### Prerequisites
   - Node.js and npm installed on your machine.
   - MySQL or MariaDB sql instance running.
-- ##### Front-end setup.
 
-1. Navigate to the `front-end` directory:
-   `cd frontend`
-2. Install the dependencies:
+- ##### Front-end setup.
+1. Install the dependencies:
    `npm install`
-3. Update the environment variables: .env file
-4. Start the development server:
+2. Update the environment variables: .env file
+3. Start the development server:
    `npm run dev`
 
-- ##### Back-end setup.
-
-1. Navigate to the `back-end` directory:
-   `cd backend`
-2. Install the dependencies:
-   `npm install`
-3. Configure database.
-4. Update the environment variables: .env file
-5. Start the back-end server:
-   `nmp run dev`
-
 ## Usage
-
 1. Start the both backend and frontend servers.
 2. Access the frontend via the development server i.e `http://localhost:3000`.
 
 ## Contributors:
-
 [Pawan Awasthi](https://github.com/pawandai) - Team lead  
 [Roshan Dahal](https://github.com/RoshanDharal123)  
 [Kendra Pokhrel](https://github.com/StellarSync/)  
